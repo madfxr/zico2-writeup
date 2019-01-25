@@ -14,7 +14,7 @@ Zico2 is an example of learning about penetration testing, a method of learning 
 https://www.vulnhub.com/entry/zico2-1,210/
 
 ## Methodology & Technique
-### Reconnaissance
+## Reconnaissance
 ### Network Mapping
 ```
 nmap -A -v -T5 -sS 192.168.1.1
@@ -245,7 +245,6 @@ cat /dev/null > ~/.bash_history && history -c
 -c = Clear the history list
 
 ## Vulnerability Patching
-### Local File Inclusion
 ### Vulnerable Code
 ```
 cat view.php
