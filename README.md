@@ -19,11 +19,12 @@ https://www.vulnhub.com/entry/zico2-1,210/
 ```
 nmap -A -v -T5 -sS 192.168.1.1
 ```
-
+```
 -A = Enables OS detection and Version detection, Script scanning and Traceroute
 -v = Increase verbosity level (use twice or more for greater effect)
 -T5 = Set timing template (higher is faster)
 -sS = TCP SYN/Connect()/ACK/Window/Maimon scans
+```
 
 ### Information Gathering/Footprinting
 ```
@@ -34,43 +35,46 @@ nc 192.168.1.1 80
 nc 192.168.1.1 22
 curl -I 192.168.1.1
 ```
-
+```
 -I = Fetch the headers only!
+```
 
 ## Reporting
 ### Creating Reconnaissance Report
 ```
 nmap -A -v -T5 -sS 192.168.1.1 -oN 192.168.1.1-top10TCP.nmap
 ```
-
+```
 --top-ports 10 = Scan 10 most common ports
 --open = Only show open (or possibly open) ports
 -Pn = Disabling host discovery
 -n = Never do DNS resolution
 -oN = Output scan in normal
+```
 
 ## Scanning
 ### Web Object Scanning
 ```
 dirsearch -u http://192.168.1.1 -w /usr/share/dirb/wordlists/common.txt -e php
 ```
-
+```
 -u = URL
 -w = Wordlists
 -e = Extensions
-
+```
 
 ### Web Vulnerabilities Scanning
 ```
 uniscan -u 192.168.1.1 -qweds
 ```
-
+```
 -u = URL
 -q = Enable Directory checks
 -w = Enable File checks
 -e = Enable robots.txt and sitemap.xml check
 -d = Enable Dynamic checks
 -s = Enable Static checks
+```
 
 ## Exploitation
 ### Searching Exploit
@@ -120,10 +124,11 @@ shell
 ```
 python -c 'import pty; pty.spawn("/bin/bash")'
 ```
-
+```
 -c = Command
 pty = Pseudo-terminal utilities
 pty.spawn = Module for controling pseudo-terminal
+```
 
 ### Creating Reverse Shell
 ```
@@ -246,9 +251,9 @@ cat /dev/null > ~/.bash_history && history -c
 
 ## Vulnerability Patching
 ### Vulnerable Code
-```
+``
 cat view.php
-```
+``
 ```
 <?php
        $page = $_GET['page'];
