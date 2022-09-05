@@ -2,7 +2,7 @@
 A method of learning how to find vulnerabilities in a system. Simulations on ethical hacking, how we as pentesters can enter into a system by utilizing vulnerabilities that exist on the victim's website, as well as making security by patching existing vulnerabilities.
 
 ## Tools
-- dirsearch[https://www.kali.org/tools/dirsearch]
+- [dirsearch](https://www.kali.org/tools/dirsearch)
 - Uniscan
 - SearchSploit
 - Netcat
