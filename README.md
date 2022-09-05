@@ -10,7 +10,7 @@ A method of learning how to find vulnerabilities in a system. Simulations on eth
 - [Weevely](https://www.kali.org/tools/weevely/#weevely)
 
 ## Templates
-https://www.vulnhub.com/entry/zico2-1,210/
+[ZICO2: 1](https://www.vulnhub.com/entry/zico2-1,210/)
 
 ## Methodology & Technique
 ### Reconnaissance
