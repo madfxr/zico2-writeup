@@ -2,12 +2,12 @@
 A method of learning how to find vulnerabilities in a system. Simulations on ethical hacking, how we as pentesters can enter into a system by utilizing vulnerabilities that exist on the victim's website, as well as making security by patching existing vulnerabilities.
 
 ## Tools
-- [dirsearch](https://www.kali.org/tools/dirsearch)
-- Uniscan
-- SearchSploit
-- Netcat
-- Metasploit Framework
-- Weevely
+- [Dirsearch](https://www.kali.org/tools/dirsearch)
+- [Uniscan](https://www.kali.org/tools/uniscan/#uniscan)
+- [SearchSploit](https://www.kali.org/tools/exploitdb/#searchsploit)
+- [Netcat](https://www.kali.org/tools/netcat/#nctraditional)
+- [Metasploit Framework](https://www.kali.org/tools/metasploit-framework/#metasploit-framework)
+- [Weevely](https://www.kali.org/tools/weevely/#weevely)
 
 ## Templates
 https://www.vulnhub.com/entry/zico2-1,210/
