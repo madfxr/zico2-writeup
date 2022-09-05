@@ -181,7 +181,7 @@ define('DB_COLLATE', '');
 ssh zico@192.168.1.1
 ```
 
-### Privilige Escalation
+### Privilege Escalation
 ```
 sudo -l
 touch /tmp/privesc
