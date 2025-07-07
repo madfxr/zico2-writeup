@@ -2,15 +2,15 @@
 A method of learning how to find vulnerabilities in a system. Simulations on ethical hacking, how we as pentesters can enter into a system by utilizing vulnerabilities that exist on the victim's website, as well as making security by patching existing vulnerabilities.
 
 ## Tools
-- [Dirsearch](https://www.kali.org/tools/dirsearch)
-- [Uniscan](https://www.kali.org/tools/uniscan/#uniscan)
-- [SearchSploit](https://www.kali.org/tools/exploitdb/#searchsploit)
-- [Netcat](https://www.kali.org/tools/netcat/#nctraditional)
-- [Metasploit Framework](https://www.kali.org/tools/metasploit-framework/#metasploit-framework)
-- [Weevely](https://www.kali.org/tools/weevely/#weevely)
+- [Dirsearch.](https://www.kali.org/tools/dirsearch)
+- [Uniscan.](https://www.kali.org/tools/uniscan/#uniscan)
+- [SearchSploit.](https://www.kali.org/tools/exploitdb/#searchsploit)
+- [Netcat.](https://www.kali.org/tools/netcat/#nctraditional)
+- [Metasploit Framework.](https://www.kali.org/tools/metasploit-framework/#metasploit-framework)
+- [Weevely.](https://www.kali.org/tools/weevely/#weevely)
 
 ## Templates
-[ZICO2: 1](https://www.vulnhub.com/entry/zico2-1,210/)
+[ZICO2: 1.](https://www.vulnhub.com/entry/zico2-1,210/)
 
 ## Methodology & Technique
 ### Reconnaissance
@@ -255,6 +255,6 @@ vim view.php-patch
 ```
 
 ## Notes
-- This simulation is only intended for learning
-- All actions that refer to criminal acts are beyond the responsibility of the author
-- Happy hacking
+- This simulation is only intended for learning.
+- All actions that refer to criminal acts are beyond the responsibility of the author.
+- Happy hacking.
